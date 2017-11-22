@@ -137,6 +137,7 @@
     "directive-class-suffix": true,
     "no-access-missing-member": true,
     "templates-use-public": true,
+    "tslint.autoFixOnSave": true,
     "invoke-injectable": true
   }
 }
