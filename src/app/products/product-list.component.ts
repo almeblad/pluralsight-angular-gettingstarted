@@ -4,7 +4,6 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { ProductService } from './product.service';
 
 @Component({
-    selector: 'pm-products',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
@@ -15,7 +14,12 @@ export class ProductListComponent implements OnInit {
     imageMargin: number = 2;
     showImage: boolean = false;
     errorMessage: string;
-    _listFilter: string;
+    private _listFilter: string;
+    filteredProducts: IProduct[];
+    products: IProduct[] = [];
+
+    constructor(private _productService: ProductService) {}
+
     get listFilter(): string {
         return this._listFilter;
     }
@@ -23,10 +27,6 @@ export class ProductListComponent implements OnInit {
         this._listFilter = value;
         this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
     }
-    filteredProducts: IProduct[];
-    products: IProduct[] = [];
-
-    constructor(private _productService: ProductService) {}
 
     performFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLocaleLowerCase();
