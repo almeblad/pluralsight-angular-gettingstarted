@@ -9,6 +9,7 @@ node {
 
        stage('Test'){
          env.NODE_ENV = "test"
+         echo 'checking node'
          sh 'node -v'
          sh 'npm -v'
        }
