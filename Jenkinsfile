@@ -1,24 +1,24 @@
-node {
-    agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                withNPM(npmrcConfig:'MyNpmrcConfig') {
-                    echo "Performing npm build..."
-                    sh 'npm install'
-                }
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+node('node') {
+    currentBuild.result = "SUCCESS"
+
+       stage('Checkout'){
+
+          checkout scm
+       }
+
+       stage('Test'){
+
+         env.NODE_ENV = "test"
+       }
+
+       stage('Deploy'){
+
+       }
+
+       stage('Cleanup'){
+
+         echo 'prune and cleanup'
+       }
+
 }
