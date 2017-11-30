@@ -8,8 +8,9 @@ node {
        }
 
        stage('Test'){
-
          env.NODE_ENV = "test"
+         sh 'node -v'
+         sh 'npm -v'
        }
 
        stage('Deploy'){
