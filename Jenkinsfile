@@ -4,14 +4,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                withNPM(npmrcConfig:'MyNpmrcConfig') {
+                echo "Performing npm build..."
                 sh 'npm install'
+        }
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'npm test'
             }
         }
         stage('Deploy') {
