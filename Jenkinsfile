@@ -1,13 +1,13 @@
-pipeline {
+node {
     agent any
 
     stages {
         stage('Build') {
             steps {
                 withNPM(npmrcConfig:'MyNpmrcConfig') {
-                echo "Performing npm build..."
-                sh 'npm install'
-        }
+                    echo "Performing npm build..."
+                    sh 'npm install'
+                }
             }
         }
         stage('Test') {
